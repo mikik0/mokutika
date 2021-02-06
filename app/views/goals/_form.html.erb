@@ -1,3 +1,4 @@
+<main class='container mx-auto'>
 <%= form_with(model: goal, local: true) do |form| %>
   <% if goal.errors.any? %>
     <div id="error_explanation">
@@ -12,28 +13,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :title, class: "block" %>
+    <%= form.text_field :title, class: "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
-
+<br>
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.label :content, class: "inline-block relative w-64" %>
+    <%= form.text_area :content, class: "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
-
-
+<br>
   <div class="field">
     <%= form.label :category_id %>
-    <%= form.select :status, [['ダイエット',0],['健康',1],['読書',2],['運動',3],['勉強',4],['日記・ブログ',5],['資格',6],['音楽',7],['制作',8],['チャレンジ',9],['仕事',10],['部活・サークル',11],['生活',12]] %>
+    <%= form.select :category_id, [['ダイエット',0],['健康',1],['読書',2],['運動',3],['勉強',4],['日記・ブログ',5],['資格',6],['音楽',7],['制作',8],['チャレンジ',9],['仕事',10],['部活・サークル',11],['生活',12]], class: "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
-
-
+<br>
   <div class="field">
     <%= form.label :deadline %>
-    <%= form.date_select :deadline %>
+    <%= form.date_select :deadline, class: "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
-
+<br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "投稿", class: "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
   </div>
 <% end %>
+</main>

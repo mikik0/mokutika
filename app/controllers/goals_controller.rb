@@ -3,7 +3,12 @@ class GoalsController < ApplicationController
 
   # GET /goals or /goals.json
   def index
-    @goals = Goal.all
+    @goals = Goal.all.order(id: "DESC")
+  end
+
+  def mypage
+    @goals = current_user.goals.order(id: "DESC")
+    @dones = Done.all
   end
 
   # GET /goals/1 or /goals/1.json

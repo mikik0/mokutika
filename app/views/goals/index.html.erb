@@ -1,34 +1,88 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Goals</h1>
+<h1>目標一覧ページ</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Category</th>
-      <th>Deadline</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @goals.each do |goal| %>
-      <tr>
-        <td><%= goal.title %></td>
-        <td><%= goal.content %></td>
-        <td><%= goal.category_id %></td>
-        <td><%= goal.deadline %></td>
-        <td><%= goal.user.name %></td>
-        <td><%= link_to 'Show', goal %></td>
-        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="justify-start sm:justify-center md:justify-end lg:justify-between xl:justify-around">
+      <div class="p-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <div class="flex">
+            <div>
+              <div class="w-10 h-10 bg-cover bg-center rounded-full mr-3 shadow-inner" style="background-image: url('http://tailwindtemplates.io/wp-content/uploads/2020/09/tf-cooper.jpg')">
+              </div>
+            </div>
+          <div>
+          <p class="text-gray-600 font-medium"><%= goal.user.name %></p>
+          <div class="flex items-center text-xs text-gray-400">
+            <p>
+            <% if goal.category_id == 0 %>
+              ダイエット
+            <% elsif goal.category_id == 1 %>
+              健康
+            <% elsif goal.category_id == 2 %>
+              読書
+            <% elsif goal.category_id == 3 %>
+              運動
+            <% elsif goal.category_id == 4 %>
+              勉強
+            <% elsif goal.category_id == 5 %>
+              日記・ブログ
+            <% elsif goal.category_id == 6 %>
+              資格
+            <% elsif goal.category_id == 7 %>
+              音楽
+            <% elsif goal.category_id == 8 %>
+              制作
+            <% elsif goal.category_id == 9 %>
+              チャレンジ
+            <% elsif goal.category_id == 10 %>
+              仕事
+            <% elsif goal.category_id == 11 %>
+              部活・サークル
+            <% elsif goal.category_id == 12 %>
+              生活
+            <% elsif goal.category_id ==  %>
+              未選択
+            <% end %>
+            /のこり n日</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6">
+      <h2 class="text-2xl">目標:<%= goal.title %></h2>
+      <p class="text-gray-600 text-sm">
+        <%= goal.content %>
+      </p>
+      </div>
+      <div class="mt-6 flex">
+      <% if !current_user.nil? %>
+        <button class="flex items-center hover:opacity-75 mr-4">
+          <i class="mr-2">
+            <svg
+              class="fill-current text-blue-300 w-6 h-6"
+              height="512"
+              viewBox="0 0 16 16"
+              width="512"
+            >
+              <path
+                d="M0 6v8a1 1 0 001 1h3V5H1a1 1 0 00-1 1zM14.153 6H11.2a.491.491 0 01-.43-.247.492.492 0 01-.007-.496l1.041-1.875c.229-.411.252-.894.065-1.325a1.488 1.488 0 00-1.013-.858l-.734-.184a.499.499 0 00-.493.15l-3.987 4.43A2.499 2.499 0 005 7.267V12.5C5 13.878 6.122 15 7.5 15h4.974a2.506 2.506 0 002.411-1.84l1.068-4.898A1.849 1.849 0 0014.153 6z"
+              />
+            </svg>
+          </i>
+          <p class="mt-1 text-blue-400"> n Join</p>
+        </button>
+      <% end %>
+            <p><%= goal.deadline %></p>
+            <br>
+            <p><%= link_to '詳細', goal %>
+      <% if goal.user_id == current_user.id %>
+            <%= link_to '編集', edit_goal_path(goal) %>
+            <%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <% end %>
+
+        </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
 
 <br>
-
-<%= link_to 'New Goal', new_goal_path %>

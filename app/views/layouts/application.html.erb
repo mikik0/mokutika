@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mokutika</title>
+    <meta charset="UTF-8">
+    <title>Mokutika!</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel=“shortcut icon” href=“favicon.ico”>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-3">
+  <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <span class="font-semibold text-xl tracking-tight">mokutika!</span>
+  </div>
+  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div class="text-sm lg:flex-grow">
+      <a href="/mypage" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        マイページ
+      </a>
+      <a href="/goals" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        みんなの投稿
+      </a>
+      <a href="/goals/new" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        目標宣言
+      </a>
+      <a href="/users/edit" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        ユーザー設定
+      </a>
+      <%= link_to("ログアウト", "/users/sign_out", { method: :DELETE, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"}) %>
+    </div>
+  </div>
+</nav>
+
     <%= yield %>
+
+<% if !current_user.nil? %>
+  <button class="fixed_btn mb-3 rounded-full flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-400"  onclick="location.href='/goals/new'">目標宣言</button>
+<% end %>
+
   </body>
 </html>

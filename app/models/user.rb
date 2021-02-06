@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one_attached :icon
   has_many :goals, dependent: :destroy
   has_many :dones, dependent: :destroy
+  has_many :follow, dependent: :destroy
 end
