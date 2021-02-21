@@ -75,7 +75,7 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400"> n Join</p>
+          <p class="mt-1 text-blue-400"> <%= goal.follows.length %> Join</p>
         </button>
       <% end %>
             <p><%= goal.deadline %></p>
@@ -127,7 +127,7 @@
                   />
                 </svg>
               </i>
-              <p class="mt-1 text-blue-400">n Join</p>
+              <p class="mt-1 text-blue-400"><%= done.goal.follows.length %> Join</p>
             </div>
             <button class="flex items-center hover:opacity-75">
               <i class="mr-2">
