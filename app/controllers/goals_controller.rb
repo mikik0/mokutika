@@ -41,6 +41,13 @@ class GoalsController < ApplicationController
     end
   end
 
+  # POST /goals/:id/join
+  def join
+    @goals = Goal.all.order(id: "DESC")
+    goal = Goal.find(params[:goal_id])
+    @follow = current_user.follows.create(goal_id: params[:goal_id],user_id: params[:user_id])
+  end
+
   # PATCH/PUT /goals/1 or /goals/1.json
   def update
     respond_to do |format|

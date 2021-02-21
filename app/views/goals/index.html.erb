@@ -54,7 +54,11 @@
         <%= goal.content %>
       </p>
       </div>
+      <%= button_to goals_join_path(goal), method: :post do%>
+      おさないで
+      <% end %>
       <div class="mt-6 flex">
+
       <% if !current_user.nil? %>
         <button class="flex items-center hover:opacity-75 mr-4">
           <i class="mr-2">
