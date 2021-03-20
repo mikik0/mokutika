@@ -62,7 +62,9 @@
       </div>
       <div class="mt-6 flex">
       <% if !current_user.nil? %>
-        <button class="flex items-center hover:opacity-75 mr-4">
+        <% if goal.user_id != current_user.id %>
+          <button class="flex items-center hover:opacity-75 mr-4">
+        <% end %>
           <i class="mr-2">
             <svg
               class="fill-current text-blue-300 w-6 h-6"
@@ -75,8 +77,10 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400"> <%= goal.follows.length %> Join</p>
-        </button>
+          <p class="mt-1 text-blue-400"> <%= goal.follows.length + 1 %> Join</p>
+        <% if goal.user_id != current_user.id %>
+          </button>
+        <% end %>
       <% end %>
             <p><%= goal.deadline %></p>
             <br>
@@ -127,7 +131,7 @@
                   />
                 </svg>
               </i>
-              <p class="mt-1 text-blue-400"><%= done.goal.follows.length %> Join</p>
+              <p class="mt-1 text-blue-400"><%= done.goal.follows.length + 1 %> Join</p>
             </div>
               <i class="mr-2">
                 <svg
