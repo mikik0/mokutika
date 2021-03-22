@@ -5,11 +5,11 @@ class DonesController < ApplicationController
 
   def create
     done = current_user.dones.create(goal_id: params[:goal_id])
-    redirect_to goals_url, notice: "doneしました"
+    redirect_to mypage_url, notice: "doneしました"
   end
 
   def destroy
     done = current_user.dones.find_by(goal_id: params[:goal_id]).destroy
-    redirect_to goals_url, notice: "done解除しました"
+    redirect_to mypage_url, notice: "done解除しました"
   end
 end

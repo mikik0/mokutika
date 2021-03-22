@@ -41,7 +41,7 @@ class GoalsController < ApplicationController
     end
   end
 
-  # POST /goals/:id/join
+  # POST /goals/:goal_id/join
   def join
     @goals = Goal.all.order(id: "DESC")
     goal = Goal.find(params[:goal_id])
