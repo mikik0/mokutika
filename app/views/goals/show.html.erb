@@ -20,14 +20,13 @@
   <%= @goal.deadline %>
 </p>
 
-<% unless @goal.user == current_user %>
-<% end %>
-
+<% if @goal.user == current_user %>
   <% if @done.present? %>
     <%= link_to '解除する', done_path(@done), method: :delete, class: 'btn btn-danger' %>
   <% else %>
-    <%= link_to '完了する', dones_path, method: :post, class: 'btn btn-default' %>
+    <%= link_to '完了にする', dones_path(@done), method: :post, class: 'btn btn-default' %>
   <% end %>
+<% end %>
 
 <% if @goal.user == current_user %>
   <%= link_to 'Edit', edit_goal_path(@goal) %>

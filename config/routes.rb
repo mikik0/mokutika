@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
   end
-    get "mypage" => "goals#mypage"
-    post "goals/:goal_id/join", to: "goals#join", as: :goals_join
+  get "mypage" => "goals#mypage"
+  post "goals/:goal_id/join", to: "goals#join", as: :goals_join
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
