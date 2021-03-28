@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root  'goals#mypage'
   get 'dones/show'
   devise_for :users
-  resources :goals
-  resources :dones, only: [:create, :destroy, :show]
+  resources :goals do
+     resource :dones, only: [:create, :destroy]
+  end
   resources :follows, only: [:create, :destroy]
   root  'goals#index'
   devise_scope :user do
