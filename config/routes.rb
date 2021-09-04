@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   get 'dones/show'
   devise_for :users
   resources :goals do
-     resource :dones, only: [:create, :destroy]
+     resource :follows, only: [:create, :destroy]
   end
-  resources :follows, only: [:create, :destroy]
+  resources :dones, only: [:create, :destroy]
   root  'goals#index'
   devise_scope :user do
     get "signup", to: "devise/registrations#new"
