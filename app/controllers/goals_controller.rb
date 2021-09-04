@@ -28,13 +28,17 @@ class GoalsController < ApplicationController
 
   # POST /goals or /goals.json
   def create
-    @goal = Goal.new(goal_params)
-    @goal.user_id = current_user.id
+    @goal = Goal.create(goal_params)
 
     respond_to do |format|
       if @goal.save
-        @goal.follows.create(user: current_user)
-        format.html { redirect_to @goal, notice: "Goal was successfully created." }
+        #目標をを作成すると同時に自身も参加する
+         current_user.follows.create(
+          goal_id: @goal.id,
+          is_owner: true
+        )
+
+        format.html { redirect_to @goal, notice: "目標が作成されました。" }
         format.json { render :show, status: :created, location: @goal }
       else
         format.html { render :new, status: :unprocessable_entity }

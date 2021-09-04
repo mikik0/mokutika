@@ -1,6 +1,11 @@
 class Goal < ApplicationRecord
   validates :title, presence: true
-  belongs_to :user
+  validates :content, presence: true
+  validate :deadline_check
   has_many :follows, dependent: :destroy
-  has_many :follow_users, through: :follows, source: :user
+
+  def deadline_check
+    errors.add(:deadline, "は現在より前の日付で登録できません。") if
+      self.deadline < Time.current
+  end
 end
