@@ -33,6 +33,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
+        @goal.follows.create(user: current_user)
         format.html { redirect_to @goal, notice: "Goal was successfully created." }
         format.json { render :show, status: :created, location: @goal }
       else

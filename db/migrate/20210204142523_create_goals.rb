@@ -4,7 +4,7 @@ class CreateGoals < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :content
       t.integer :category_id
-      t.date :deadline
+      t.datetime :deadline
 
       t.timestamps
     end
