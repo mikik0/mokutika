@@ -21,11 +21,11 @@
 </p>
 
 <% if @goal.user == current_user %>
-  <% if @done.present? %>
-    <%= link_to '解除する', goal_dones_path(@goal), method: :delete, class: 'btn btn-danger' %>
+  <%# <% if @done.present? %>
+    <%#= link_to '解除する', goal_dones_path(@goal), method: :delete, class: 'btn btn-danger' %>
   <% else %>
-    <%= link_to '完了にする', goal_dones_path(@goal), method: :post, class: 'btn btn-default' %>
-  <% end %>
+    <%#= link_to '完了にする', goal_dones_path(@goal), method: :post, class: 'btn btn-default' %>
+  <%# end %>
 <% end %>
 
 <% if @goal.user == current_user %>

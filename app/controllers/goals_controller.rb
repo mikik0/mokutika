@@ -9,12 +9,12 @@ class GoalsController < ApplicationController
 
   def mypage
     @goals = current_user.goals.order(id: "DESC")
-    @dones = Done.all
+    # @dones = Done.all
   end
 
   # GET /goals/1 or /goals/1.json
   def show
-     @done = current_user.dones.find_by(goal_id: @goal.id)
+    #  @done = current_user.dones.find_by(goal_id: @goal.id)
   end
 
   # GET /goals/new

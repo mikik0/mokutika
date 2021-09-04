@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2021_02_21_131452) do
   create_table "follows", force: :cascade do |t|
     t.integer "user_id"
     t.integer "goal_id"
+    t.boolean "is_owner", default: false
+    t.boolean "is_finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
