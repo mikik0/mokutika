@@ -49,8 +49,6 @@ ActiveRecord::Schema.define(version: 2021_02_21_131452) do
     t.datetime "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

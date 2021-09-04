@@ -33,7 +33,7 @@ class GoalsController < ApplicationController
     respond_to do |format|
       if @goal.save
         #目標をを作成すると同時に自身も参加する
-         current_user.follow.create(
+         current_user.follows.create(
           goal_id: @goal.id,
           is_owner: true
         )

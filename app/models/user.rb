@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          authentication_keys: [:name]
   has_one_attached :icon
-  has_many :goals, dependent: :destroy
+  has_many :follows, dependent: :destroy
+  has_many :goals, through: :follow
   has_many :follows, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
