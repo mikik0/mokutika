@@ -33,13 +33,6 @@ ActiveRecord::Schema.define(version: 2021_02_21_131452) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "dones", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "goal_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "follows", force: :cascade do |t|
     t.integer "user_id"
     t.integer "goal_id"
@@ -51,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_02_21_131452) do
     t.string "title"
     t.text "content"
     t.integer "category_id"
-    t.date "deadline"
+    t.datetime "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
