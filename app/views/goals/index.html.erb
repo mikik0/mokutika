@@ -79,7 +79,7 @@
             <p><%= goal.deadline %></p>
             <br>
             <p><%= link_to '詳細', goal %>
-      <% if goal.user_id == current_user.id %>
+       <% if current_user.owner?(goal.id) %>
             <%= link_to '編集', edit_goal_path(goal) %>
             <%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
       <% end %>
