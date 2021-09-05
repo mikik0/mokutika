@@ -17,7 +17,7 @@
 
 <p>
   <strong>Deadline:</strong>
-  <%= @goal.deadline %>
+  <%= @goal.deadline.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
 <% if current_user.owner?(@goal.id) %>

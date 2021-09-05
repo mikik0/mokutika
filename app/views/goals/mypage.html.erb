@@ -77,12 +77,12 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400"> <%= goal.follows.length + 1 %> Join</p>
+          <p class="mt-1 text-blue-400"> <%= goal.follows.length %> Join</p>
         <% if !current_user.owner?(goal.id) %>
           </button>
         <% end %>
       <% end %>
-            <p><%= goal.deadline %></p>
+            <p><%= goal.deadline.strftime("%Y-%m-%d %H:%M") %></p>
             <br>
             <p><%= link_to '詳細', goal %>
       <% if current_user.owner?(goal.id) %>
