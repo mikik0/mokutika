@@ -45,11 +45,11 @@
               未選択
             <% end %>
             /のこり
-            <%# if (goal.deadline - Date.today).to_i < 0 %>
+            <% if (goal.deadline - Time.now).to_i < 0 %>
               0日
-            <%# else %>
-              <%#= (goal.deadline - Date.today).to_i %>日
-            <%# end %>
+            <% else %>
+              <%= (goal.deadline - Time.now).to_i %>日
+            <% end %>
             </p>
           </div>
         </div>

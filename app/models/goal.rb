@@ -10,4 +10,12 @@ class Goal < ApplicationRecord
     errors.add(:deadline, "は現在より前の日付で登録できません。") if
       self.deadline < Time.current
   end
+
+  def current_goal?
+    deadline > Time.now
+  end
+
+  def followed_by?(user)
+    follows.exists?(user_id: user.id)
+  end
 end

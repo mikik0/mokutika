@@ -44,7 +44,7 @@
             <% elsif goal.category_id ==  %>
               未選択
             <% end %>
-            /のこり n日</p>
+            / のこり <%= (goal.deadline - Time.now).to_i %> 日</p>
           </div>
         </div>
       </div>
@@ -54,8 +54,8 @@
         <%= goal.content %>
       </p>
       </div>
-      <%= button_to goals_join_path(goal.id), method: :post do %>
-      おさないで
+      <%= button_to goal_follows_path(goal.id), method: :post do %>
+        おさないで
       <% end %>
       <div class="mt-6 flex">
 
