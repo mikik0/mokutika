@@ -73,13 +73,13 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400"> <%= goal.follows.length + 1 %> Join</p>
+          <p class="mt-1 text-blue-400"> <%= goal.follows.length %> Join</p>
         </button>
       <% end %>
-            <p><%= goal.deadline %></p>
+            <p><%= goal.deadline.strftime("%Y-%m-%d %H:%M") %></p>
             <br>
             <p><%= link_to '詳細', goal %>
-      <% if goal.user_id == current_user.id %>
+       <% if current_user.owner?(goal.id) %>
             <%= link_to '編集', edit_goal_path(goal) %>
             <%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
       <% end %>

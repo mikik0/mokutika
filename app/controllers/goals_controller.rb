@@ -14,7 +14,7 @@ class GoalsController < ApplicationController
 
   # GET /goals/1 or /goals/1.json
   def show
-    #  @done = current_user.dones.find_by(goal_id: @goal.id)
+    @done = current_user.follows.find_by(goal_id: @goal.id)
   end
 
   # GET /goals/new
@@ -28,7 +28,8 @@ class GoalsController < ApplicationController
 
   # POST /goals or /goals.json
   def create
-    @goal = Goal.create(goal_params)
+    #@goal = Goal.create(goal_params)
+    @goal = current_user.goals.build(goal_params)
 
     respond_to do |format|
       if @goal.save
@@ -84,6 +85,6 @@ class GoalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def goal_params
-      params.require(:goal).permit(:title, :content, :category_id, :deadline)
+      params.require(:goal).permit(:title, :content, :category_id, :deadline).merge(user_id: current_user.id)
     end
 end

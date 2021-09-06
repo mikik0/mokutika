@@ -45,11 +45,11 @@
               未選択
             <% end %>
             /のこり
-            <% if (goal.deadline - Date.today).to_i < 0 %>
+            <%# if (goal.deadline - Date.today).to_i < 0 %>
               0日
-            <% else %>
-              <%= (goal.deadline - Date.today).to_i %>日
-            <% end %>
+            <%# else %>
+              <%#= (goal.deadline - Date.today).to_i %>日
+            <%# end %>
             </p>
           </div>
         </div>
@@ -62,7 +62,7 @@
       </div>
       <div class="mt-6 flex">
       <% if !current_user.nil? %>
-        <% if goal.user_id != current_user.id %>
+        <% if !current_user.owner?(goal.id) %>
           <button class="flex items-center hover:opacity-75 mr-4">
         <% end %>
           <i class="mr-2">
@@ -77,15 +77,15 @@
               />
             </svg>
           </i>
-          <p class="mt-1 text-blue-400"> <%= goal.follows.length + 1 %> Join</p>
-        <% if goal.user_id != current_user.id %>
+          <p class="mt-1 text-blue-400"> <%= goal.follows.length %> Join</p>
+        <% if !current_user.owner?(goal.id) %>
           </button>
         <% end %>
       <% end %>
-            <p><%= goal.deadline %></p>
+            <p><%= goal.deadline.strftime("%Y-%m-%d %H:%M") %></p>
             <br>
             <p><%= link_to '詳細', goal %>
-      <% if goal.user_id == current_user.id %>
+      <% if current_user.owner?(goal.id) %>
             <%= link_to '編集', edit_goal_path(goal) %>
             <%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
       <% end %>
@@ -94,3 +94,4 @@
     </div>
     <% end %>
 <h1>達成済み</h1>
+<!-- 整備中 -->
