@@ -14,4 +14,8 @@ class Goal < ApplicationRecord
   def current_goal?
     deadline > Time.now
   end
+
+  def followed_by?(user)
+    follows.exists?(user_id: user.id)
+  end
 end

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :goals do
-     resource :follows, only: [:create, :destroy]
+    resource :follows, only: [:create, :destroy]
   end
   get "mypage" => "goals#mypage"
-  post "goals/:goal_id/join", to: "goals#join", as: :goals_join
+  # post "goals/:goal_id/join", to: "goals#join", as: :goals_join
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
