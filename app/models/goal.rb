@@ -4,11 +4,11 @@ class Goal < ApplicationRecord
   validate :deadline_check
 
   has_many :follows, dependent: :destroy
-  belongs_to :user, optional: true #外部キーのnullを許容する
+  belongs_to :user, optional: true # 外部キーのnullを許容する
 
   def deadline_check
-    errors.add(:deadline, "は現在より前の日付で登録できません。") if
-      self.deadline < Time.current
+    errors.add(:deadline, 'は現在より前の日付で登録できません。') if
+      deadline < Time.current
   end
 
   def current_goal?
